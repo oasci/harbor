@@ -12,3 +12,5 @@ timer.dat
 psi.*.clean
 
 .venv
+
+.obsidian/*

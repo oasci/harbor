@@ -34,7 +34,7 @@ website/source/environment
 05-figures/README
 06-dissemination/README
 07-misc/README
-website/source/documentation
+website/source/sop
 Code license <LICENSE_CODE>
 Info license <LICENSE_INFO>
 ```
