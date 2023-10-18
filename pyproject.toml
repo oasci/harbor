@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "harbor"
 version = "2023.10.17"
-description = "Where data finds safe harbor and researchers set sail"
+description = "Where data is safe and researchers set sail"
 authors = ["OASCI"]
 readme = "README.md"
 license = "CC BY 4.0"

@@ -1,6 +1,6 @@
 <h1 align="center">harbor</h1>
 
-<h4 align="center">Where data finds safe harbor and researchers set sail</h4>
+<h4 align="center">Where data is safe and researchers set sail</h4>
 
 TODO:
 
