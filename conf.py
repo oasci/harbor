@@ -22,7 +22,7 @@ sys.path.insert(0, os.path.abspath("./website/source/exts"))
 project = "harbor"
 copyright = "2023, OASCI"
 author = "OASCI"
-html_title = "harbor"
+html_logo = "website/source/_static/images/harbor-logo-whale.svg"
 
 
 # -- General configuration ---------------------------------------------------
