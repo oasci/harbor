@@ -130,13 +130,13 @@ cleanup: pycache-remove dsstore-remove mypycache-remove ipynbcheckpoints-remove 
 .PHONY: website
 website:
 	rm -rf ./website/html/
-	$(CONDA) sphinx-build -nT ./website/source/ ./website/html/
+	$(CONDA) sphinx-build -nT ./ ./website/html/
 	touch ./website/html/.nojekyll
 
 .PHONY: website-versioned
 website-versioned:
 	rm -rf ./website/html/
-	$(CONDA) sphinx-multiversion -nT ./website/source/ ./website/html/
+	$(CONDA) sphinx-multiversion -nT ./ ./website/html/
 	touch ./website/html/.nojekyll
 
 	# Create html redirect to main

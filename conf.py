@@ -14,7 +14,7 @@ import os
 import sys
 
 # For our custom sphinx extensions
-sys.path.insert(0, os.path.abspath("./exts"))
+sys.path.insert(0, os.path.abspath("./website/source/exts"))
 
 
 # -- Project information -----------------------------------------------------
@@ -43,7 +43,6 @@ extensions = [
     "sphinxemoji.sphinxemoji",
     "sphinx_autodoc_typehints",
     "sphinx_copybutton",
-    # "sphinxext.rediraffe",  # Enable if you will use redirects
     "sphinx_togglebutton",
     "sphinxcontrib.bibtex",
     "sphinx_inline_tabs",
@@ -54,7 +53,7 @@ suppress_warnings = ["autosectionlabel.*"]
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-# exclude_patterns = []
+exclude_patterns = [".venv", "website/html/"]
 
 # Updating master docs
 root_doc = "index"
@@ -81,7 +80,7 @@ html_static_path = ["_static"]
 
 # Including sphinx multiversion
 templates_path = [
-    "_templates",
+    "website/source/_templates",
 ]
 smv_branch_whitelist = r"main"  # Only include the main branch
 html_sidebars = {
@@ -104,23 +103,23 @@ html_sidebars = {
 # autoapi
 autoapi_type = "python"
 autoapi_generate_api_docs = True
-autoapi_dirs = ["../../02_material_and_methods/02_code"]
+autoapi_dirs = ["02-methods/harbor"]
 autoapi_add_toctree_entry = True
 autoapi_python_class_content = "both"
 autoapi_keep_files = False
 autodoc_typehints = "description"
 
 # bibtex
-bibtex_bibfiles = ["refs.bib"]
+bibtex_bibfiles = ["website/source/refs.bib"]
 
 # Header buttons
 html_theme_options = {
     "sidebar_hide_name": True,
     "source_repository": "https://github.com/oasci/harbor",
     "source_branch": "main",
-    "source_directory": "docs/source/",
+    "source_directory": "/",
     "top_of_page_button": ["edit", "save", "launch"],
-    "path_to_docs": "docs/source/",
+    "path_to_docs": "/",
     "repository_url": "https://github.com/oasci/harbor",
     "repository_branch": "main",
     "launch_buttons": {
@@ -153,7 +152,6 @@ myst_enable_extensions = [
     "colon_fence",
     "smartquotes",
     "replacements",
-    # "linkify",
     "substitution",
 ]
 

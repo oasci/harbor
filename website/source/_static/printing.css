@@ -36,7 +36,7 @@
     .content pre {
         word-wrap: break-word;
     }
-    
+
     .content a.headerlink {
         display: none;
     }
@@ -67,7 +67,7 @@
     .content .bd-footer-content {
         display: none !important;
     }
-    
+
 
     div.h2, div.h3, div.h4 {
         page-break-after: avoid;
@@ -98,5 +98,5 @@
         page-break-before: avoid;
         page-break-inside: auto;
     }
-    
+
 }

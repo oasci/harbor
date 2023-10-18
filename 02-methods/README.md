@@ -18,3 +18,9 @@ TODO: Probably scripts?
 
 A modularized package that contains all code used in the project.
 This will be installed inside the virtual environment and be callable from scripts throughout the repository.
+
+```{toctree}
+:hidden:
+
+*
+```
