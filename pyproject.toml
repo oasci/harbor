@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "projectharbor"
+name = "harbor"
 version = "2023.10.17"
 description = "Where data finds safe harbor and researchers set sail"
 authors = ["OASCI"]
