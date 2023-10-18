@@ -3,7 +3,7 @@ name = "harbor"
 version = "2023.10.17"
 description = "Where data is safe and researchers set sail"
 authors = ["OASCI"]
-readme = "README.md"
+readme = "index.md"
 license = "CC BY 4.0"
 
 [tool.poetry.dependencies]

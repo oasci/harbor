@@ -56,7 +56,7 @@ suppress_warnings = ["autosectionlabel.*"]
 exclude_patterns = [".venv", "website/html/"]
 
 # Updating master docs
-root_doc = "README"
+root_doc = "index"
 
 # Add mappings
 intersphinx_mapping = {
@@ -76,7 +76,7 @@ html_theme = "furo"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ["_static"]
+html_static_path = ["website/source/_static"]
 
 # Including sphinx multiversion
 templates_path = [
