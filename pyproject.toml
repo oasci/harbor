@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "projectharbor"
+version = "2023.10.17"
+description = "Where data finds safe harbor and researchers set sail"
+authors = ["OASCI"]
+readme = "README.md"
+license = "CC BY 4.0"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
