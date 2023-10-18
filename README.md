@@ -20,3 +20,17 @@ However, all other data, information, documentation, and associated content prov
 This means you are free to share and adapt the non-code elements, but you must give appropriate credit to the original source and indicate if changes were made.
 
 These dual licenses ensure a balance between open-source software and data accessibility while encouraging collaboration and proper attribution.
+
+```{toctree}
+:hidden:
+
+01-management/README
+02-methods/README
+03-data/README
+04-analysis/README
+05-figures/README
+06-dissemination/README
+07-misc/README
+website/source/documentation
+website/source/setting-up-environment
+```

@@ -2,8 +2,13 @@
 
 TODO:
 
-```{toctree}
-:hidden:
+## Contents
 
+```{toctree}
+:glob:
+
+001-example/*
+990-code-libraries/*
+991-preregistration/*
 *
 ```

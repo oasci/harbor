@@ -38,8 +38,16 @@ It is essential to make it available and easy to access to facilitate the plan's
 Save digital notebook information here.
 It could be photos from a paper notebook, self-organized text files, or data exported from an electronic lab notebook (ELN).
 
-```{toctree}
-:hidden:
+## Contents
 
+```{toctree}
+:glob:
+
+01-admin/*
+02-grants/*
+03-meetings/*
+04-literature/*
+05-standards/*
+06-notebook/*
 *
 ```

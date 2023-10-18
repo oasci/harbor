@@ -14,13 +14,17 @@ More can be added (and documented) with numbers `03` to `99`.
 
 TODO: Probably scripts?
 
-### `02-code`
+### `harbor`
 
 A modularized package that contains all code used in the project.
 This will be installed inside the virtual environment and be callable from scripts throughout the repository.
+It's name should change based on this project name.
+
+## Contents
 
 ```{toctree}
-:hidden:
+:glob:
 
+01-protocols/*
 *
 ```

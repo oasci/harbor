@@ -132,11 +132,13 @@ website:
 	rm -rf ./website/html/
 	$(CONDA) sphinx-build -nT ./ ./website/html/
 	touch ./website/html/.nojekyll
+	mv ./website/html/README.html ./website/html/index.html
 
 .PHONY: website-versioned
 website-versioned:
 	rm -rf ./website/html/
 	$(CONDA) sphinx-multiversion -nT ./ ./website/html/
+	mv ./website/html/README.html ./website/html/index.html
 	touch ./website/html/.nojekyll
 
 	# Create html redirect to main

@@ -2,8 +2,10 @@
 
 TODO:
 
+## Contents
+
 ```{toctree}
-:hidden:
+:glob:
 
 *
 ```
