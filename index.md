@@ -2,7 +2,9 @@
 
 <h4 align="center">Where data is safe and researchers set sail</h4>
 
-TODO:
+This repository provides a robust, standardized framework that streamlines research projects and adheres to open science principles.
+Everything is included, from reproducible Python environments with conda and poetry to an automated website generator with Sphinx and GitHub actions.
+Join us in advancing open science, promoting transparency, and accelerating innovation by adopting this comprehensive toolkit.
 
 ## Communication
 
@@ -24,6 +26,7 @@ These dual licenses ensure a balance between open-source software and data acces
 ```{toctree}
 :hidden:
 
+website/source/setting-up-environment
 01-management/README
 02-methods/README
 03-data/README
@@ -32,5 +35,4 @@ These dual licenses ensure a balance between open-source software and data acces
 06-dissemination/README
 07-misc/README
 website/source/documentation
-website/source/setting-up-environment
 ```

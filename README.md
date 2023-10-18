@@ -2,7 +2,9 @@
 
 <h4 align="center">Where data is safe and researchers set sail</h4>
 
-TODO:
+This repository provides a robust, standardized framework that streamlines research projects and adheres to open science principles.
+Everything is included, from reproducible Python environments with conda and poetry to an automated website generator with Sphinx and GitHub actions.
+Join us in advancing open science, promoting transparency, and accelerating innovation by adopting this comprehensive toolkit.
 
 ## Communication
 
