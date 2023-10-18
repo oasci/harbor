@@ -1,4 +1,4 @@
-# Setting up environment
+# Environment
 
 A crucial aspect of consistent development is the standardization of the computational environment.
 We use a combination of [`conda`](https://conda.io/) and [`poetry`](https://python-poetry.org/).

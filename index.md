@@ -12,7 +12,7 @@ Join us in advancing open science, promoting transparency, and accelerating inno
 
 We use [this repository's issues](https://github.com/oasci/harbor/issues) as our todo list.
 Asynchronous conversations about any of the tasks should be included as issue comments.
-Synchronous meetings happening in-person or virtually should have meeting minutes stored in the [appropriate directory](01-management/03-meetings).
+Synchronous meetings happening in-person or virtually should have meeting minutes stored in the [appropriate directory](/01-management/03-meetings/README.md).
 
 ## License
 
@@ -26,7 +26,7 @@ These dual licenses ensure a balance between open-source software and data acces
 ```{toctree}
 :hidden:
 
-website/source/setting-up-environment
+website/source/environment
 01-management/README
 02-methods/README
 03-data/README
@@ -35,4 +35,6 @@ website/source/setting-up-environment
 06-dissemination/README
 07-misc/README
 website/source/documentation
+Code license <LICENSE_CODE>
+Info license <LICENSE_INFO>
 ```

@@ -8,7 +8,7 @@ It is advised to use vector figures (e.g.,  `.svg` files) when possible, as thei
 ```{toctree}
 :glob:
 
-001-example/*
+000-template/README
 990-shared-figures/*
 *
 ```

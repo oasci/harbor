@@ -7,8 +7,8 @@ TODO:
 ```{toctree}
 :glob:
 
-001-example/*
-990-code-libraries/*
-991-preregistration/*
+000-template/README
+990-code-libraries/README
+991-preregistration/README
 *
 ```

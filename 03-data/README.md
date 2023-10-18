@@ -18,6 +18,7 @@ I suggest splitting the data between experiments there, too.
 ```{toctree}
 :glob:
 
-001-example/*
+000-template/README
+999-processed/README
 *
 ```

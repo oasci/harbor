@@ -43,11 +43,10 @@ It could be photos from a paper notebook, self-organized text files, or data exp
 ```{toctree}
 :glob:
 
-01-admin/*
-02-grants/*
-03-meetings/*
-04-literature/*
-05-standards/*
-06-notebook/*
-*
+01-admin/README
+02-grants/README
+03-meetings/README
+04-literature/README
+05-standards/README
+06-notebook/README
 ```
