@@ -23,7 +23,6 @@ project = "harbor"
 copyright = "2023, OASCI"
 author = "OASCI"
 html_title = "harbor"
-html_logo = "_static/images/hamiparm-logo.svg"
 
 
 # -- General configuration ---------------------------------------------------
