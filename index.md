@@ -40,6 +40,25 @@ This aforementioned date is subject to change to a time earlier than **January 1
 >
 > These dual licenses ensure a balance between open-source software and data accessibility while encouraging collaboration and proper attribution.
 
+## Deploying
+
+A note to maintainers.
+
+We use [bump-my-version](https://github.com/callowayproject/bump-my-version) to release a new version.
+This will create a git tag that is used by [poetry-dynamic-version](https://github.com/mtkennerly/poetry-dynamic-versioning) to generate version strings.
+
+However, we are using [Calendar Versioning](https://calver.org/) which means we need to manually specify new versions.
+For example, to bump the version to November 8, 2024, you would run the following command after activating the relevant conda environment.
+
+```bash
+bump-my-version bump --new-version 2024.11.8
+```
+
+After releasing a new version, you need to push and include all tags.
+
+```bash
+git push --follow-tags
+```
 
 ```{toctree}
 :hidden:

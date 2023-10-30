@@ -15,6 +15,7 @@ DOCS_URL := https://harbor.oasci.org
 
 .PHONY: conda-setup
 conda-setup:
+	- conda deactivate
 	conda remove -y --name $(CONDA_NAME) --all
 	conda create -y -n $(CONDA_NAME) python=$(PYTHON_VERSION)
 	conda install -y conda-lock -n $(CONDA_NAME)
