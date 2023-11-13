@@ -51,14 +51,9 @@ from-conda-lock:
 pre-commit-install:
 	$(CONDA) pre-commit install
 
-# Reads `pyproject.toml`, solves environment, then writes lock file.
-.PHONY: poetry-lock
-poetry-lock:
-	$(CONDA) poetry lock --no-interaction
-
 .PHONY: install
 install:
-	$(CONDA) poetry install --no-interaction --no-root
+	$(CONDA) poetry install --no-interaction
 
 .PHONY: environment
 environment: conda-create from-conda-lock pre-commit-install install
