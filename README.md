@@ -32,9 +32,10 @@ After releasing a new version, you need to push and include all tags.
 git push --follow-tags
 ```
 
-## Licenses
+## License
 
-Code contained in this project is released under the [MIT License](https://spdx.org/licenses/MIT.html) as specified in [`LICENSE_CODE`](https://gitlab.com/oasci/harbor/-/blob/main/LICENSE_CODE.md), which grants you the freedom to use, modify, and distribute it as long as you include the original copyright notice and disclaimer.
+Code contained in this project is released under the [MIT license][mit] as specified in `LICENSE.md`.
+All other data, information, documentation, and associated content provided within this project are released under the [CC BY 4.0 license][cc-by-4.0] as specified in `LICENSE_INFO.md`.
 
-All other data, information, documentation, and associated content provided within this project are released under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) as specified in [`LICENSE_INFO`](https://gitlab.com/oasci/harbor/-/blob/main/LICENSE_INFO.md).
-This means you are free to share and adapt the non-code elements, but you must give appropriate credit to the original source and indicate if changes were made.
+[mit]: https://spdx.org/licenses/MIT.html
+[cc-by-4.0]: https://creativecommons.org/licenses/by/4.0/

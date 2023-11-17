@@ -1,18 +1,17 @@
 SHELL := /usr/bin/env bash
 PYTHON_VERSION := 3.11
 PYTHON_VERSION_CONDENSED := 311
-PACKAGE_NAME := harbor
-REPO_PATH := $(shell git rev-parse --show-toplevel)
-PACKAGE_PATH := $(REPO_PATH)/$(PACKAGE_NAME)
-TESTS_PATH := $(REPO_PATH)/tests
+PACKAGE_NAME := {{ cookiecutter.project_name }}
+PACKAGE_PATH := $(PACKAGE_NAME)/
+TESTS_PATH := tests/
 CONDA_NAME := $(PACKAGE_NAME)-dev
 CONDA := conda run -n $(CONDA_NAME)
 CONDA_LOCK_OPTIONS := -p linux-64 -p osx-64 -p win-64 --channel conda-forge
-DOCS_URL := https://harbor.oasci.org
 
 ###   ENVIRONMENT   ###
 
-# Default packages that we always need.
+# See https://github.com/pypa/pip/issues/7883#issuecomment-643319919
+export PYTHON_KEYRING_BACKEND := keyring.backends.null.Keyring
 
 .PHONY: conda-create
 conda-create:
@@ -22,6 +21,7 @@ conda-create:
 	$(CONDA) conda install -y python=$(PYTHON_VERSION)
 	$(CONDA) conda install -y conda-lock
 
+# Default packages that we always need.
 .PHONY: conda-setup
 conda-setup:
 	$(CONDA) conda install -y -c conda-forge poetry
@@ -76,18 +76,24 @@ formatting:
 	- $(CONDA) black --config pyproject.toml $(PACKAGE_PATH)
 
 
-
-###   LINTING   ###
+###   TESTING   ###
 
 .PHONY: test
 test:
-	$(CONDA) pytest -c pyproject.toml --cov=$(PACKAGE_PATH) --cov-report=xml $(TESTS_PATH)
+	$(CONDA) pytest -c pyproject.toml --cov=$(PACKAGE_NAME) --cov-report=xml --junit-xml=report.xml $(TESTS_PATH)
+
+.PHONY: coverage
+coverage:
+	$(CONDA) coverage report
+
+
+###   LINTING   ###
 
 .PHONY: check-codestyle
 check-codestyle:
 	$(CONDA) isort --diff --check-only $(PACKAGE_PATH)
 	$(CONDA) black --diff --check --config pyproject.toml $(PACKAGE_PATH)
-	-$(CONDA) pylint $(PACKAGE_PATH)
+	- $(CONDA) pylint $(PACKAGE_PATH)
 
 .PHONY: mypy
 mypy:
@@ -149,6 +155,7 @@ serve:
 .PHONY: docs
 docs:
 	$(CONDA) mkdocs build -d public/
+	- rm -rf 08-api/
 
 .PHONY: open-docs
 open-docs:

@@ -34,17 +34,19 @@ git push --follow-tags
 
 ## License
 
-Code contained in this project is released under the [GPLv3 License](https://opensource.org/license/gpl-3-0/) as specified in `LICENSE_CODE_COPYLEFT.md`, which grants you the freedom to use, modify, and distribute it as long as you include the original copyright notice and disclaimer.
-
-All other data, information, documentation, and associated content provided within this project are released under the [Creative Commons Attribution-NoDerivatives 4.0 International License (CC BY-ND 4.0)](https://creativecommons.org/licenses/by-nd/4.0/) as specified in `LICENSE_INFO_COPYLEFT.md`.
-You can freely share and use the material for any purpose, including commercial use, as long as you follow the license terms, which require attribution and prohibit distribution of modified material or imposing additional restrictions.
+Code contained in this project is released under the [GPLv3 license][gplv3] as specified in `LICENSE.md`.
+All other data, information, documentation, and associated content provided within this project are released under the [CC BY-ND 4.0 license][cc-by-nd-4.0] as specified in `LICENSE_INFO.md`.
 
 ### Permissive release
 
-On **January 1, 2040**, the above licenses are voided, removed, and superseded by `LICENSE_CODE` and `LICENSE_INFO`, with the following content.
-This aforementioned date is subject to change.
+On **January 1, 2040**, the above [GPLv3][gplv3] and [CC BY-ND 4.0][cc-by-nd-4.0] licenses are voided and superseded by the immediately following paragraph.
 
-> Code contained in this project is released under the [Apache-2.0 License](https://opensource.org/license/apache-2-0/) as specified in `LICENSE_CODE.md`, which grants you the freedom to use, modify, and distribute it as long as you include the original copyright notice and disclaimer.
->
-> All other data, information, documentation, and associated content provided within this project are released under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) as specified in `LICENSE_INFO.md`.
-> You are free to share and adapt the non-code elements, but you must give appropriate credit to the original source and indicate if changes were made.
+> Code contained in this project is released under the [MIT license][mit] as specified in `LICENSE.md`.
+> All other data, information, documentation, and associated content provided within this project are released under the [CC BY 4.0 license][cc-by-4.0] as specified in `LICENSE_INFO.md`.
+
+A manual permissive release can be made by the maintainers whenever they see fit by updating the license files and updating this section.
+
+[gplv3]: https://spdx.org/licenses/GPL-3.0-only.html
+[cc-by-nd-4.0]: https://creativecommons.org/licenses/by-nd/4.0/
+[mit]: https://spdx.org/licenses/MIT.html
+[cc-by-4.0]: https://creativecommons.org/licenses/by/4.0/
