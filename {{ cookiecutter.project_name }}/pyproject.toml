@@ -38,7 +38,7 @@ commit = true
 [tool.poetry-dynamic-versioning]
 enable = true
 vcs = "git"
-format-jinja = "{%- if distance == 0 -%}{{ serialize_pep440(base) }}{%- else -%}{{ serialize_pep440(base, post=distance) }}{%- endif -%}"
+{% raw %}format-jinja = "{%- if distance == 0 -%}{{ serialize_pep440(base) }}{%- else -%}{{ serialize_pep440(base, post=distance) }}{%- endif -%}"{% endraw %}
 
 [tool.poetry-dynamic-versioning.substitution]
 patterns = [

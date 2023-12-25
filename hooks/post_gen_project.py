@@ -8,20 +8,12 @@ PROJECT_DIRECTORY = Path.cwd().absolute()
 PROJECT_NAME = "{{ cookiecutter.project_name }}"
 PROJECT_MODULE = "{{ cookiecutter.project_name }}"
 
-# Values to generate correct license
-LICENSE = "{{ cookiecutter.license }}"
+# Values to generate correct
 ORGANIZATION = "{{ cookiecutter.organization }}"
 
 # Values to generate github repository
 GIT_HOST = "{{ cookiecutter.git_host }}"
 USER_NAME = "{{ cookiecutter.user_name }}"
-
-licenses_dict = {
-    "MIT": "mit",
-    "BSD-3": "bsd3",
-    "GNU GPL v3.0": "gpl3",
-    "Apache Software License 2.0": "apache",
-}
 
 
 def remove_unused_files(directory: Path) -> None:

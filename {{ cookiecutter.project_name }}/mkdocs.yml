@@ -9,7 +9,7 @@ repo_url: https://{{ cookiecutter.git_host }}.com/{{ cookiecutter.organization }
 # https://squidfunk.github.io/mkdocs-material/
 theme:
   name: material
-  custom_dir: docs/overrides
+  custom_dir: study/.overrides
   language: en
   palette:
     # Palette toggle for light mode
@@ -67,6 +67,12 @@ plugins:
           options:
             annotations_path: brief
             docstring_style: google
+  - awesome-pages:
+        collapse_single_pages: true
+        strict: false
+        order: asc
+        sort_type: natural
+        order_by: title
 
 extra:
   generator: false

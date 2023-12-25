@@ -59,6 +59,12 @@ plugins:
   - autorefs
   - material-plausible
   - table-reader
+  - awesome-pages:
+        collapse_single_pages: true
+        strict: false
+        order: asc
+        sort_type: natural
+        order_by: title
 
 extra:
   generator: false

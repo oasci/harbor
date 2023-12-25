@@ -8,7 +8,7 @@ Join us in advancing open science, promoting transparency, and accelerating inno
 
 > No research should be done alone.
 
-We use [this repository's issues](https://gitlab.com/oasci/harbor/-/issues) as our todo list.
+We use this repository's issues as our todo list.
 Asynchronous conversations about any of the tasks should be included as issue comments.
 Synchronous meetings happening in-person or virtually should have meeting minutes stored in the [appropriate directory](01-management/03-meetings).
 

@@ -44,3 +44,4 @@ jobs:
 
       - name: Deploy docs
         run: conda run -n{% endraw %}{{ cookiecutter.project_name }}-dev{% raw %} mkdocs gh-deploy --force
+{% endraw %}
