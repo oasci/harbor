@@ -2,17 +2,16 @@ SHELL := /usr/bin/env bash
 PYTHON_VERSION := 3.11
 PYTHON_VERSION_CONDENSED := 311
 PACKAGE_NAME := harbor
-REPO_PATH := $(shell git rev-parse --show-toplevel)
-PACKAGE_PATH := $(REPO_PATH)/$(PACKAGE_NAME)
-TESTS_PATH := $(REPO_PATH)/tests
+PACKAGE_PATH := $(PACKAGE_NAME)/
+TESTS_PATH := tests/
 CONDA_NAME := $(PACKAGE_NAME)-dev
 CONDA := conda run -n $(CONDA_NAME)
 CONDA_LOCK_OPTIONS := -p linux-64 -p osx-64 -p win-64 --channel conda-forge
-DOCS_URL := https://harbor.oasci.org
 
 ###   ENVIRONMENT   ###
 
-# Default packages that we always need.
+# See https://github.com/pypa/pip/issues/7883#issuecomment-643319919
+export PYTHON_KEYRING_BACKEND := keyring.backends.null.Keyring
 
 .PHONY: conda-create
 conda-create:
@@ -26,26 +25,29 @@ conda-create:
 conda-setup:
 	$(CONDA) conda install -y -c conda-forge poetry
 	$(CONDA) conda install -y -c conda-forge pre-commit
-	$(CONDA) conda install -y -c conda-forge tomli tomli-w
 	$(CONDA) conda install -y -c conda-forge conda-poetry-liaison
 
 # Conda-only packages specific to this project.
 .PHONY: conda-dependencies
 conda-dependencies:
-	echo "No conda-only packages are required."
+	$(CONDA) conda install -y -c conda-forge nodejs
+
+.PHONY: nodejs-dependencies
+nodejs-dependencies:
+	$(CONDA) npm install markdownlint-cli2 --global
 
 .PHONY: conda-lock
 conda-lock:
-	- rm $(REPO_PATH)/conda-lock.yml
+	- rm conda-lock.yml
 	$(CONDA) conda env export --from-history | grep -v "^prefix" > environment.yml
+	$(CONDA) head -n -1 environment.yml > temp.yml ; mv temp.yml environment.yml
 	$(CONDA) conda-lock -f environment.yml $(CONDA_LOCK_OPTIONS)
-	rm $(REPO_PATH)/environment.yml
-	$(CONDA) cpl-deps $(REPO_PATH)/pyproject.toml --env_name $(CONDA_NAME)
+	$(CONDA) cpl-deps pyproject.toml --env_name $(CONDA_NAME)
 	$(CONDA) cpl-clean --env_name $(CONDA_NAME)
 
 .PHONY: from-conda-lock
 from-conda-lock:
-	$(CONDA) conda-lock install -n $(CONDA_NAME) $(REPO_PATH)/conda-lock.yml
+	$(CONDA) conda-lock install -n $(CONDA_NAME) conda-lock.yml
 	$(CONDA) cpl-clean --env_name $(CONDA_NAME)
 
 .PHONY: pre-commit-install
@@ -62,10 +64,10 @@ install:
 	$(CONDA) poetry install --no-interaction --no-root
 
 .PHONY: environment
-environment: conda-create from-conda-lock pre-commit-install install
+environment: conda-create from-conda-lock pre-commit-install nodejs-dependencies install
 
-.PHONY: refresh-locks
-refresh-locks: conda-create conda-setup conda-dependencies conda-lock pre-commit-install poetry-lock install
+.PHONY: locks
+locks: conda-create conda-setup conda-dependencies conda-lock pre-commit-install poetry-lock nodejs-dependencies install
 
 
 
@@ -77,16 +79,22 @@ validate:
 
 .PHONY: formatting
 formatting:
-	- $(CONDA) isort $(PACKAGE_PATH)
-	- $(CONDA) black --config pyproject.toml $(PACKAGE_PATH)
+	- $(CONDA) isort --settings-path pyproject.toml ./
+	- $(CONDA) black --config pyproject.toml ./
 
 
-
-###   LINTING   ###
+###   TESTING   ###
 
 .PHONY: test
 test:
-	$(CONDA) pytest -c pyproject.toml --cov=$(PACKAGE_PATH) --cov-report=xml $(TESTS_PATH)
+	$(CONDA) pytest -c pyproject.toml --cov=$(PACKAGE_NAME) --cov-report=xml --junit-xml=report.xml --color=yes $(TESTS_PATH)
+
+.PHONY: coverage
+coverage:
+	$(CONDA) coverage report
+
+
+###   LINTING   ###
 
 .PHONY: check-codestyle
 check-codestyle:
@@ -97,12 +105,6 @@ check-codestyle:
 .PHONY: mypy
 mypy:
 	-$(CONDA) mypy --config-file pyproject.toml ./
-
-.PHONY: check-safety
-check-safety:
-	$(CONDA) poetry check
-	$(CONDA) safety check --full-report
-	$(CONDA) bandit -ll --recursive $(PACKAGE_PATH) $(TESTS_PATH)
 
 .PHONY: lint
 lint: check-codestyle mypy check-safety
@@ -146,14 +148,33 @@ cleanup: pycache-remove dsstore-remove mypycache-remove ipynbcheckpoints-remove 
 
 ###   WEBSITE   ###
 
+mkdocs_port := $(shell \
+	start_port=3000; \
+	max_attempts=100; \
+	for i in $$(seq 0 $$(($$max_attempts - 1))); do \
+		current_port=$$(($$start_port + i)); \
+		if ! lsof -i :$$current_port > /dev/null; then \
+			echo $$current_port; \
+			break; \
+		fi; \
+		if [ $$i -eq $$(($$max_attempts - 1)) ]; then \
+			echo "Error: Unable to find an available port after $$max_attempts attempts."; \
+			exit 1; \
+		fi; \
+	done \
+)
+
 .PHONY: serve
 serve:
-	echo "Served at http://127.0.0.1:8910/"
-	$(CONDA) mkdocs serve -a localhost:8910
+	echo "Served at http://127.0.0.1:$(mkdocs_port)/"
+	$(CONDA) mkdocs serve -a localhost:$(mkdocs_port)
 
 .PHONY: docs
 docs:
+	- rm -rf study/api/
 	$(CONDA) mkdocs build -d public/
+	- rm -rf api/
+	- rm -f public/gen_ref_pages.py
 
 .PHONY: open-docs
 open-docs:
