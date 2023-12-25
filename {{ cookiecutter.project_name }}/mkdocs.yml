@@ -1,11 +1,10 @@
-docs_dir: docs
+docs_dir: study
 
-site_name: harbor
-site_author: OASCI
+site_name: {{ cookiecutter.project_name }}
+site_author: {{ cookiecutter.organization }}
 
-# Github
-repo_name: oasci/metalflare
-repo_url: https://gitlab.com/oasci/metalflare
+repo_name: {{ cookiecutter.organization }}/{{ cookiecutter.project_name }}
+repo_url: https://{{ cookiecutter.git_host }}.com/{{ cookiecutter.organization }}/{{ cookiecutter.project_name }}
 
 # https://squidfunk.github.io/mkdocs-material/
 theme:
@@ -60,20 +59,17 @@ plugins:
   - table-reader
   - gen-files:
       scripts:
-        - docs/gen_ref_pages.py
+        - study/gen_ref_pages.py
   - mkdocstrings:
       handlers:
         python:
-          paths: ["metalflare"]
+          paths: ["{{ cookiecutter.project_name }}"]
           options:
             annotations_path: brief
             docstring_style: google
 
 extra:
   generator: false
-  analytics:
-    provider: plausible
-    domain: metalflare
 
 extra_css:
   - css/base.css

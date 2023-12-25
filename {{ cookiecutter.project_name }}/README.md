@@ -1,6 +1,4 @@
-<img src="website/source/_static/images/harbor-logo.svg" alt="hamiparm" align="center">
-
-<h4 align="center">Where data is safe and researchers set sail</h4>
+# {{ cookiecutter.project_name }}
 
 This repository provides a robust, standardized framework that streamlines research projects and adheres to open science principles.
 Everything is included, from reproducible Python environments to an automated website pipeline.
