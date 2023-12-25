@@ -4,13 +4,13 @@ site_name: harbor
 site_author: OASCI
 
 # Github
-repo_name: oasci/harbor
-repo_url: https://gitlab.com/oasci/harbor
+repo_name: oasci/studies/harbor
+repo_url: https://gitlab.com/oasci/studies/harbor
 
 # https://squidfunk.github.io/mkdocs-material/
 theme:
   name: material
-  custom_dir: docs/overrides
+  custom_dir: docs/.overrides
   language: en
   palette:
     # Palette toggle for light mode
@@ -58,19 +58,12 @@ plugins:
   - autorefs
   - material-plausible
   - table-reader
-  - mkdocstrings:
-      handlers:
-        python:
-          paths: ["metalflare"]
-          options:
-            annotations_path: brief
-            docstring_style: google
 
 extra:
   generator: false
   analytics:
     provider: plausible
-    domain: metalflare
+    domain: harbor.oasci.org
 
 extra_css:
   - css/base.css
