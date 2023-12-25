@@ -12,6 +12,7 @@ theme:
   name: material
   custom_dir: docs/.overrides
   language: en
+  logo: img/harbor-logo-square-white.svg
   palette:
     # Palette toggle for light mode
     - scheme: default
