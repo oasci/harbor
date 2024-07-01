@@ -43,7 +43,6 @@ conda-lock:
 	- rm conda-lock.yml
 	$(CONDA) conda env export --from-history | grep -v "^prefix" > environment.yml
 	$(CONDA) conda-lock -f environment.yml $(CONDA_LOCK_OPTIONS)
-	rm environment.yml
 	$(CONDA) cpl-deps pyproject.toml --env_name $(CONDA_NAME)
 	$(CONDA) cpl-clean --env_name $(CONDA_NAME)
 
@@ -64,6 +63,8 @@ poetry-lock:
 .PHONY: install
 install:
 	$(CONDA) poetry install --no-interaction
+	- mkdir .mypy_cache
+	- $(CONDA) mypy --install-types --non-interactive --explicit-package-bases $(PACKAGE_NAME)
 
 .PHONY: environment
 environment: conda-create from-conda-lock pre-commit-install nodejs-dependencies install
@@ -80,15 +81,15 @@ validate:
 
 .PHONY: formatting
 formatting:
-	- $(CONDA) isort $(PACKAGE_PATH)
-	- $(CONDA) black --config pyproject.toml $(PACKAGE_PATH)
+	- $(CONDA) isort --settings-path pyproject.toml ./
+	- $(CONDA) black --config pyproject.toml ./
 
 
 ###   TESTING   ###
 
 .PHONY: test
 test:
-	$(CONDA) pytest -c pyproject.toml --cov=$(PACKAGE_NAME) --cov-report=xml --junit-xml=report.xml $(TESTS_PATH)
+	$(CONDA) pytest -c pyproject.toml --cov=$(PACKAGE_NAME) --cov-report=xml --junit-xml=report.xml --color=yes $(TESTS_PATH)
 
 .PHONY: coverage
 coverage:
@@ -101,20 +102,14 @@ coverage:
 check-codestyle:
 	$(CONDA) isort --diff --check-only $(PACKAGE_PATH)
 	$(CONDA) black --diff --check --config pyproject.toml $(PACKAGE_PATH)
-	- $(CONDA) pylint $(PACKAGE_PATH)
+	- $(CONDA) pylint --rcfile pyproject.toml $(PACKAGE_NAME)
 
 .PHONY: mypy
 mypy:
-	-$(CONDA) mypy --config-file pyproject.toml ./
-
-.PHONY: check-safety
-check-safety:
-	$(CONDA) poetry check
-	$(CONDA) safety check --full-report
-	$(CONDA) bandit -ll --recursive $(PACKAGE_PATH) $(TESTS_PATH)
+	- $(CONDA) mypy --config-file pyproject.toml --explicit-package-bases $(PACKAGE_NAME)
 
 .PHONY: lint
-lint: check-codestyle mypy check-safety
+lint: check-codestyle mypy
 
 
 

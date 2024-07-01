@@ -27,15 +27,15 @@ theme:
     text: Roboto
     code: Roboto Mono
   icon:
-    repo: fontawesome/brands/gitlab
+    repo: fontawesome/brands/{{ cookiecutter.git_host }}
     annotation: material/star-four-points-circle
   features:
+    - content.action.edit
+    - content.action.view
     - content.code.annotate
     - content.code.copy
     - content.code.select
-    - navigation.instant
-    - navigation.instant.prefetch
-    - navigation.instant.progress
+    - content.tooltips
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.tracking
@@ -61,10 +61,15 @@ plugins:
       scripts:
         - study/gen_ref_pages.py
   - mkdocstrings:
+      enabled: !ENV [ENABLE_MKDOCSTRINGS, true]
+      default_handler: python
       handlers:
         python:
           paths: ["{{ cookiecutter.project_name }}"]
+          import:
+          - https://docs.python.org/3/objects.inv
           options:
+            show_source: true
             annotations_path: brief
             docstring_style: google
   - awesome-pages:
@@ -73,6 +78,22 @@ plugins:
         order: asc
         sort_type: natural
         order_by: title
+  - glightbox:
+      zoomable: true
+      draggable: false
+      height: auto
+      width: 100%
+  - blog:
+      blog_dir: management/literature/
+      post_dir: "{blog}/articles"
+      post_date_format: medium
+      post_url_date_format: yyyy
+      blog_toc: true
+      post_excerpt_separator: <!-- more -->
+      archive: true
+      archive_name: Articles
+      archive_url_format: "articles/{date}"
+  - macros
 
 extra:
   generator: false
@@ -82,7 +103,7 @@ extra_css:
   - css/colors.css
 
 extra_javascript:
-  - javascripts/mathjax.js
+  - js/mathjax-config.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
