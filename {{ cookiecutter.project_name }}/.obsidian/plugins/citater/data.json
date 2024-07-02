@@ -1,4 +1,4 @@
-{
+{% raw %}{
   "citationExportFormat": "biblatex",
   "literatureNoteTitleTemplate": "{{title}} (@{{citekey}})",
   "literatureNoteFolder": "Reading notes",
@@ -10,3 +10,4 @@
   "addRibbonAction": true,
   "citationExportPath": "study/management/literature/refs.bib"
 }
+{% endraw %}
