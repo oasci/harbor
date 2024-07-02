@@ -1,6 +1,6 @@
 SHELL := /usr/bin/env bash
-PYTHON_VERSION := 3.11
-PYTHON_VERSION_CONDENSED := 311
+PYTHON_VERSION := {{ cookiecutter.dev_python_version }}
+PYTHON_VERSION_CONDENSED := {{ cookiecutter.dev_python_version.replace('.', '') }}
 PACKAGE_NAME := {{ cookiecutter.project_name }}
 PACKAGE_PATH := $(PACKAGE_NAME)/
 TESTS_PATH := tests/
@@ -11,7 +11,7 @@ CONDA_LOCK_OPTIONS := -p linux-64 -p osx-64 -p win-64 --channel conda-forge
 ###   ENVIRONMENT   ###
 
 # See https://github.com/pypa/pip/issues/7883#issuecomment-643319919
-export PYTHON_KEYRING_BACKEND := keyring.backends.null.Keyring
+export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 
 .PHONY: conda-create
 conda-create:
