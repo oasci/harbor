@@ -9,13 +9,8 @@
 *icons
 
 # Don't ignore
-!obsidian-bibtex-adder
-!obsidian-bibtex-adder/main.js
-!obsidian-bibtex-adder/manifest.json
-!obsidian-bibtex-adder/data.json
-
-!obsidian-citation-plugin
-!obsidian-citation-plugin/main.js
-!obsidian-citation-plugin/manifest.json
-!obsidian-citation-plugin/data.json
-!obsidian-citation-plugin/styles.css
+!citater
+!citater/main.js
+!citater/manifest.json
+!citater/data.json
+!citater/styles.css
