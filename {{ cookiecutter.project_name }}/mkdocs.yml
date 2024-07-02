@@ -94,6 +94,7 @@ plugins:
       archive_name: Articles
       archive_url_format: "articles/{date}"
   - macros
+  - roamlinks
 
 extra:
   generator: false
