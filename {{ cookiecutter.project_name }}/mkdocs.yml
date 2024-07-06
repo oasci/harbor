@@ -81,8 +81,8 @@ plugins:
   - glightbox:
       zoomable: true
       draggable: false
-      height: auto
-      width: 100%
+      height: 80vh
+      width: auto
   - blog:
       blog_dir: management/literature/
       post_dir: "{blog}/articles"
@@ -102,6 +102,9 @@ extra:
 extra_css:
   - css/base.css
   - css/colors.css
+  - css/mol.css
+  - css/mkdocstrings.css
+  - https://cdn.jsdelivr.net/npm/molstar@latest/build/viewer/molstar.css
 
 extra_javascript:
   - js/mathjax-config.js
