@@ -1,1 +1,8 @@
-{% raw %}{% extends "base.html" %}{% endraw %}
+{% raw %}{% extends "base.html" %}
+
+{% block header %}
+    {{ super() }}
+    <script src="https://cdn.jsdelivr.net/npm/molstar@latest/build/viewer/molstar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+{% endblock %}
+{% endraw %}
