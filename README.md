@@ -8,7 +8,7 @@ Join us in advancing open science, promoting transparency, and accelerating inno
 
 ## Communication
 
-> No research should be done alone.
+**No research should be done alone.**
 
 We use [this repository's issues](https://github.com/oasci/harbor/issues) as our todo list.
 Asynchronous conversations about any of the tasks should be included as issue comments.

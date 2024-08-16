@@ -8,10 +8,21 @@ CONDA_NAME := $(PACKAGE_NAME)-dev
 CONDA := conda run -n $(CONDA_NAME)
 CONDA_LOCK_OPTIONS := -p linux-64 -p osx-64 -p win-64 --channel conda-forge
 
+# Default target
+all:
+	@echo "Available targets:"
+	@echo "  environment : Install conda environment named $(CONDA_NAME) with dependencies"
+	@echo "  locks       : Fresh install conda environment and rewrite lock files"
+	@echo "  serve       : Serve website documentation that watches and rebuilds on file changes"
+	@echo "  docs        : Build static website files in public/"
+	@echo "  help        : Display this help message"
+
+help: all
+
 ###   ENVIRONMENT   ###
 
 # See https://github.com/pypa/pip/issues/7883#issuecomment-643319919
-export PYTHON_KEYRING_BACKEND := keyring.backends.null.Keyring
+export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 
 .PHONY: conda-create
 conda-create:
@@ -146,7 +157,7 @@ cleanup: pycache-remove dsstore-remove mypycache-remove ipynbcheckpoints-remove 
 
 
 
-###   WEBSITE   ###
+###   DOCS   ###
 
 .PHONY: docs-env
 docs-env:
@@ -170,12 +181,13 @@ mkdocs_port := $(shell \
 
 .PHONY: serve
 serve:
-	echo "Served at http://127.0.0.1:$(mkdocs_port)/"
-	$(CONDA) mkdocs serve -a localhost:$(mkdocs_port)
+	@ echo "Serving documentation at http://127.0.0.1:$(mkdocs_port)/"
+	@ $(CONDA) mkdocs serve -a localhost:$(mkdocs_port)
 
 .PHONY: docs
 docs:
 	$(CONDA) mkdocs build -d public/
+	- rm -f public/gen_ref_pages.py
 
 .PHONY: open-docs
 open-docs:
