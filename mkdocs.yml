@@ -80,10 +80,6 @@ plugins:
       fallback_to_build_date: true
   - table-reader
 
-hooks:
-  - hooks/launchy.py
-colab_base_url: https://colab.research.google.com/github/oasci/harbor/blob/main/docs
-
 extra:
   generator: false
   analytics:
