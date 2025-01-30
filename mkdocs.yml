@@ -6,6 +6,7 @@ site_author: OASCI
 # Github
 repo_name: oasci/harbor
 repo_url: https://github.com/oasci/harbor
+copyright: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> by OASCI
 
 # https://squidfunk.github.io/mkdocs-material/
 theme:
@@ -35,9 +36,8 @@ theme:
     - content.code.annotate
     - content.code.copy
     - content.code.select
-    - navigation.instant
-    - navigation.instant.prefetch
-    - navigation.instant.progress
+    - content.tooltips
+    - content.tabs.link
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.tracking
@@ -56,15 +56,33 @@ validation:
 # Options need to be indented twice for some reason?
 plugins:
   - search
-  - autorefs
   - material-plausible
-  - table-reader
+  - mkdocs-jupyter:
+        no_input: False
+        include_requirejs: true
+        include_source: True
+        ignore: ["*.py"]
+        remove_tag_config:
+            remove_input_tags:
+                - hide_code
   - awesome-pages:
         collapse_single_pages: true
         strict: false
         order: asc
         sort_type: natural
         order_by: title
+  - glightbox
+  - macros
+  - print-site
+  - git-revision-date-localized:
+      type: iso_datetime
+      timezone: America/Detroit
+      fallback_to_build_date: true
+  - table-reader
+
+hooks:
+  - hooks/launchy.py
+colab_base_url: https://colab.research.google.com/github/oasci/harbor/blob/main/docs
 
 extra:
   generator: false
@@ -75,10 +93,12 @@ extra:
 extra_css:
   - css/base.css
   - css/colors.css
+  - css/launchy.css
+  - css/jupyter.css
+  - https://cdn.jsdelivr.net/npm/molstar@latest/build/viewer/molstar.css
 
 extra_javascript:
-  - javascripts/mathjax.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - js/mathjax.js
 
 markdown_extensions:
   - abbr
