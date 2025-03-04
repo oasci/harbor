@@ -55,7 +55,29 @@ validation:
 # Options need to be indented twice for some reason?
 plugins:
   - search
+  - autorefs
   - material-plausible
+  - gen-files:
+      scripts:
+        - docs/gen_ref_pages.py
+  - mkdocstrings:
+      handlers:
+        python:
+          inventories:
+            - "https://docs.python.org/3/objects.inv"
+          paths: ["{{ cookiecutter.project_name }}"]
+          options:
+            show_source: false
+            show_root_heading: false
+            annotations_path: brief
+            docstring_style: google
+            merge_init_into_class: true
+            docstring_section_style: spacy
+            show_if_no_docstring: true
+            show_labels: false
+            parameter_headings: false
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
   - mkdocs-jupyter:
         no_input: False
         include_requirejs: true
@@ -101,8 +123,6 @@ extra_css:
 
 extra_javascript:
   - js/mathjax-config.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 markdown_extensions:
   - abbr
