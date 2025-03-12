@@ -87,9 +87,12 @@ plugins:
             remove_input_tags:
                 - hide_code
   - awesome-nav
-  - glightbox
+  - glightbox:
+      zoomable: true
+      draggable: false
+      height: 80vh
+      width: auto
   - macros
-  - print-site
   - git-revision-date-localized:
       type: iso_datetime
       timezone: America/Detroit
