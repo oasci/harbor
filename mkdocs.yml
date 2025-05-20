@@ -57,14 +57,6 @@ validation:
 plugins:
   - search
   - material-plausible
-  - mkdocs-jupyter:
-        no_input: False
-        include_requirejs: true
-        include_source: True
-        ignore: ["*.py"]
-        remove_tag_config:
-            remove_input_tags:
-                - hide_code
   - awesome-nav
   - glightbox
   - macros
@@ -84,12 +76,6 @@ extra:
 extra_css:
   - css/base.css
   - css/colors.css
-  - css/launchy.css
-  - css/jupyter.css
-  - https://cdn.jsdelivr.net/npm/molstar@latest/build/viewer/molstar.css
-
-extra_javascript:
-  - js/mathjax.js
 
 markdown_extensions:
   - abbr
